@@ -31,6 +31,10 @@ class ParentClass:
         self.level = level
     def display_character_info(self):
         return f"{self.name} is a level {self.level} character."
+    # Allow the mage to pick up new inventory items
+    def add_item(self, item):
+        self.inventory.append(item)
+        return f"{self.name} picked up {item}!"
 
 
 # TODO 2:
@@ -82,8 +86,8 @@ def demonstrate_namespaces():
     mage1.nickname = "The Banished One"
 
     # Display the attributes belonging to each character
-    print("Nova's attributes:", mage1.__dict__)
-    print("Luna's attributes:", mage2.__dict__)
+    print("Cyclone's attributes:", mage1.__dict__)
+    print("Goat's attributes:", mage2.__dict__)
 
     # Display the attributes and methods belonging to the class
     print("Mage class namespace:", list(ChildClass.__dict__.keys()))
@@ -106,7 +110,7 @@ def demonstrate_copying():
 
     # Create a shallow copy and a deep copy of Nova(somehow I never learned this during my time programming, this is great!)
     shallow_mage = copy(original_mage)
-    # Deep copy wil not update its attributes unlike the shallow copy
+    # Deep copy wil have its own inventory that will not change based on the original changing
     deep_mage = deepcopy(original_mage)
 
     # Add a new item to Nova's inventory
@@ -140,6 +144,9 @@ def main():
     print(mage_character.cast_spell())
     print("Character type:", mage_character.character_type)
     print("Inherited category:", mage_character.category)
+    # My added feature is below
+    print(mage_character.add_item("Magic Scroll"))
+    print("Updated inventory:", mage_character.inventory)
 
     demonstrate_namespaces()
     demonstrate_copying()
