@@ -31,10 +31,7 @@ class ParentClass:
         self.level = level
     def display_character_info(self):
         return f"{self.name} is a level {self.level} character."
-    # Allow the mage to pick up new inventory items
-    def add_item(self, item):
-        self.inventory.append(item)
-        return f"{self.name} picked up {item}!"
+
 
 
 # TODO 2:
@@ -59,7 +56,10 @@ class ChildClass(ParentClass):
         return f"{self.name} casts {self.spell}!"
     def display_character_info(self):
         return f"{self.name} is a level {self.level} mage who uses {self.spell}."
-
+    # Allow the mage to pick up new inventory items
+    def add_item(self, item):
+        self.inventory.append(item)
+        return f"{self.name} picked up {item}!"
 
 # TODO 3:
 # Create a function that demonstrates class namespaces and instance namespaces.
@@ -105,19 +105,19 @@ def demonstrate_namespaces():
 
 def demonstrate_copying():
     print("\n=== Copy Demonstration ===")
-    # Create Nova with a starting inventory
-    original_mage = ChildClass("Nova", 10, "Fireball", ["Potion", "Staff"])
+    # Create Cyclone with a starting inventory
+    original_mage = ChildClass("Cyclone", 10, "Fireball", ["Potion", "Staff"])
 
-    # Create a shallow copy and a deep copy of Nova(somehow I never learned this during my time programming, this is great!)
+    # Create a shallow copy and a deep copy of Cyclone(somehow I never learned this during my time programming, this is great!)
     shallow_mage = copy(original_mage)
-    # Deep copy wil have its own inventory that will not change based on the original changing
+    # Deep copy will have its own inventory that will not change based on the original changing
     deep_mage = deepcopy(original_mage)
 
-    # Add a new item to Nova's inventory
+    # Add a new item to Cyclone's inventory
     original_mage.inventory.append("Magic Ring")
 
     # Display each character's inventory after the change
-    print("Original Nova's inventory:", original_mage.inventory)
+    print("Original Cyclone's inventory:", original_mage.inventory)
     print("Shallow copy inventory:", shallow_mage.inventory)
     print("Deep copy inventory:", deep_mage.inventory)
 
@@ -135,11 +135,11 @@ def main():
     print("=== Unit 1 OOP Assignment ===")
 
     print("\n=== Parent Character ===")
-    base_character = ParentClass(name="Mage",level=10)
+    base_character = ParentClass(name="Character",level=10)
     print(base_character.display_character_info())
 
     print("\n=== Child Character ===")
-    mage_character = ChildClass("Nova", 10, "Tornado", ["Healing Potion", "Staff"])
+    mage_character = ChildClass("Cyclone", 10, "Tornado", ["Healing Potion", "Staff"])
     print(mage_character.display_character_info())
     print(mage_character.cast_spell())
     print("Character type:", mage_character.character_type)
