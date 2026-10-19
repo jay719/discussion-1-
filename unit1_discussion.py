@@ -106,7 +106,7 @@ def demonstrate_namespaces():
 def demonstrate_copying():
     print("\n=== Copy Demonstration ===")
     # Create Cyclone with a starting inventory
-    original_mage = ChildClass("Cyclone", 10, "Fireball", ["Potion", "Staff"])
+    original_mage = ChildClass("Cyclone", 10, "Tornado", ["Potion", "Staff"])
 
     # Create a shallow copy and a deep copy of Cyclone(somehow I never learned this during my time programming, this is great!)
     shallow_mage = copy(original_mage)
